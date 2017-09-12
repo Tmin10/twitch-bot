@@ -1,5 +1,7 @@
 {
     "redirectUri": "",
     "clientId": "",
-    "clientSecret": ""
+    "clientSecret": "",
+    "channelName": "",
+    "userName": ""
 }

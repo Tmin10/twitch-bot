@@ -19,6 +19,7 @@
   "homepage": "https://github.com/Tmin10/twitch-bot#readme",
   "dependencies": {
     "open": "0.0.5",
+    "request": "^2.34.0",
     "twitch-bot": "^1.0.8"
   }
 }
