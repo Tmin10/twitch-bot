@@ -2,7 +2,8 @@ const TwitchBot = require('twitch-bot');
 const open = require('open');
 const readline = require('readline');
 const config = require('./config');
-var request = require('request');
+const request = require('request');
+var camera = require("./webcam-integration");
 
 var rl = readline.createInterface(process.stdin, process.stdout);
 
@@ -28,7 +29,7 @@ function processCode(code) {
     request.post(
         requestUrl,
         {},
-        function (error, response, body) {
+        (error, response, body) => {
             if (!error && response.statusCode == 200) {
                 processToken(JSON.parse(body).access_token);
             } else {
@@ -46,8 +47,31 @@ function processToken(token) {
     });
 
     Bot.on('join', () => {
-        Bot.say('Command executed! PogChamp');
+        Bot.say('Bot started! PogChamp');
+        console.log("Bot started");
         Bot.on('message', chatter => {
+            switch (chatter.message) {
+                case "left":
+                    camera.moveLeft();
+                    Bot.say("/me moved camera to the left");
+                    break;
+                case "right":
+                    camera.moveRight();
+                    Bot.say("/me moved camera to the right");
+                    break;
+                case "up":
+                    camera.moveUp();
+                    Bot.say("/me moved camera to the top");
+                    break;
+                case "down":
+                    camera.moveDown();
+                    Bot.say("/me moved camera to the bottom");
+                    break;
+                case "home":
+                    camera.goHome();
+                    Bot.say("/me moved camera to the base");
+                    break;
+            }
             console.log(chatter);
             if(chatter.message === '!test') {
                 Bot.say('Command executed! PogChamp')
