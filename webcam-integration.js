@@ -40,17 +40,6 @@ function cameraSend(command) {
         {
             url : BASE_PATH+command,
             headers : {
-                "Authorization" : 'Digest username="max", realm="IPCamera Login", nonce="1d20ca24224b4ebfbcbfd5aef66e0629", uri="/hy-cgi/ptz.cgi?cmd=ptzctrl&act=home", response="a57e6f12127fa6903327045c3130b374", qop=auth, nc=00000006, cnonce="ca60d66b9086b652"',
-                "Upgrade-Insecure-Requests": "1",
-                "User-Agent": "Mozilla/5.0 (X11; Ubuntu; Linux i686; rv:55.0) Gecko/20100101 Firefox/55.0",
-                "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-                "Accept-Language": "en-US,en;q=0.5",
-                "Accept-Encoding": "gzip, deflate",
-                "Cookie": "language=english",
-                "Connection": "keep-alive",
-                "Pragma": "no-cache",
-                "Cache-Control": "no-cache"
-
             }
         },
         (error, response, body) => {
@@ -60,12 +49,12 @@ function cameraSend(command) {
             }
         }
     );
-    // var digestRequest = require('request-digest')('max', 'equestria');
+    // var digestRequest = require('request-digest')('', '');
     // digestRequest.request(
     //     {
-    //         host: 'http://dimaaannn.asuscomm.com',
-    //         path: '/hy-cgi/ptz.cgi?cmd=ptzctrl&act=' + command,
-    //         port: 8100,
+    //         host: '',
+    //         path: '' + command,
+    //         port: ,
     //         method: 'POST'
     //     },
     //     (error, response, body) => {
