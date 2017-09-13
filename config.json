@@ -3,5 +3,6 @@
     "clientId": "",
     "clientSecret": "",
     "channelName": "",
-    "userName": ""
+    "userName": "",
+    "cameraBasePath": ""
 }
