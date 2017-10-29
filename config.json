@@ -4,5 +4,7 @@
     "clientSecret": "",
     "channelName": "",
     "userName": "",
-    "cameraBasePath": ""
+    "cameraBasePath": "",
+    "cameraLogin": "",
+    "cameraPassword": ""
 }

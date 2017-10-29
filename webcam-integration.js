@@ -1,4 +1,6 @@
 const BASE_PATH = require("./config").cameraBasePath;
+const LOGIN = require("./config").cameraLogin;
+const PASSWORD = require("./config").cameraPassword;
 const TIMEOUT = 1000;
 const request = require('request');
 
@@ -36,34 +38,27 @@ function cameraMove(direction) {
 }
 
 function cameraSend(command) {
-    request.post(
-        {
-            url : BASE_PATH+command,
-            headers : {
-            }
+    let options = {
+        method: 'POST',
+        uri: BASE_PATH + command,
+        auth: {
+            user: LOGIN,
+            pass: PASSWORD,
+            sendImmediately: false
         },
-        (error, response, body) => {
-            if (error || response.statusCode !== 200) {
-                console.log(response.statusCode);
-                console.log(error, body);
-            }
+        headers: {
+            'User-Agent': 'twitch-bot'
         }
-    );
-    // var digestRequest = require('request-digest')('', '');
-    // digestRequest.request(
-    //     {
-    //         host: '',
-    //         path: '' + command,
-    //         port: ,
-    //         method: 'POST'
-    //     },
-    //     (error, response, body) => {
-    //         if (error) {
-    //             console.log(error);
-    //         }
-    //         console.log(body);
-    //     }
-    // );
+    };
+    request(options, function(error, response, body) {
+        if (!error && response.statusCode == 200) {
+            console.log('body : ' + body)
+        } else {
+            console.log('Code : ' + response.statusCode)
+            console.log('error : ' + error)
+            console.log('body : ' + body)
+        }
+    });
 }
 
 function cameraStop() {
