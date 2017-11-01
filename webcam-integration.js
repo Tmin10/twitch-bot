@@ -33,6 +33,7 @@ exports.HScan = () => {
 }
 
 function cameraMove(direction) {
+    console.log("Camera move:" + direction);
     cameraSend(direction);
     cameraStop();
 }
