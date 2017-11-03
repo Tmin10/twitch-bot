@@ -55,7 +55,9 @@ function cameraSend(command) {
         if (!error && response.statusCode == 200) {
             console.log('body : ' + body)
         } else {
-            console.log('Code : ' + response.statusCode)
+            if (response) {
+                console.log('Code : ' + response.statusCode)
+            }
             console.log('error : ' + error)
             console.log('body : ' + body)
         }
