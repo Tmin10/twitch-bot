@@ -119,11 +119,11 @@ function move_camera() {
         Bot.say("Никто не голосовал и я доверяю выбор Дерпи: двигаем камеру " +say + "!");
     } else {
         let max = Math.max(
-            summary.left,
-            summary.right,
-            summary.up,
-            summary.down,
-            summary.home
+            global.summary.left,
+            global.summary.right,
+            global.summary.up,
+            global.summary.down,
+            global.summary.home
         );
         let for_chose = [];
         if (summary.left === max) {
@@ -141,7 +141,7 @@ function move_camera() {
         if (summary.home === max) {
             for_chose.push(4);
         }
-        let move = getRandomInt(0, for_chose.length);
+        let move = getRandomInt(0, for_chose.length - 1);
         let say = move_and_say(for_chose[move]);
         Bot.say("Выбор сделан, двигаем камеру " + say +"!");
     }
